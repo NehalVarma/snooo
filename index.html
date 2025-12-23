@@ -27,6 +27,34 @@
 <body>
     <div class="background-overlay"></div>
     
+    <!-- Character Selection Modal -->
+    <div id="characterModal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Select Players</h2>
+            
+            <div class="player-count-selector" id="playerCountSelector">
+                <p class="modal-subtitle">How many players?</p>
+                <div class="count-buttons">
+                    <button class="count-btn" data-count="2">2 Players</button>
+                    <button class="count-btn" data-count="3">3 Players</button>
+                    <button class="count-btn" data-count="4">4 Players</button>
+                    <button class="count-btn" data-count="5">5 Players</button>
+                    <button class="count-btn" data-count="6">6 Players</button>
+                </div>
+            </div>
+            
+            <div class="character-selection-area" id="characterSelectionArea" style="display: none;">
+                <p class="modal-subtitle" id="selectionStatus">Select Player 1</p>
+                
+                <div class="character-grid" id="characterGrid">
+                    <!-- Characters will be loaded here by JavaScript -->
+                </div>
+                
+                <button class="start-game-btn" id="startGameBtn" style="display: none;">Start Game</button>
+            </div>
+        </div>
+    </div>
+    
     <div class="container">
         <!-- Header -->
         <header class="header">
@@ -64,80 +92,19 @@
             <button class="undo-btn" id="undo-btn">
                 <span>↩️ Undo</span>
             </button>
+
+            <button class="change-players-btn" id="changePlayersBtn">
+                <span>🔄 Change Players</span>
+            </button>
         </div>
 
         <!-- Players Container -->
-        <div class="players-container">
-            <!-- Player A -->
-            <div class="player-panel player-a">
-                <div class="player-header">
-                    <input type="text" 
-                           class="player-name-input" 
-                           id="player-a-name" 
-                           placeholder="Player A"
-                           maxlength="20">
-                </div>
-                
-                <div class="score-display">
-                    <div class="score-value" id="score-a">0</div>
-                </div>
-
-                <div class="controls">
-                    <div class="score-buttons">
-                        <button class="score-btn red-ball" data-player="a" data-points="1">+1</button>
-                        <button class="score-btn yellow-ball" data-player="a" data-points="2">+2</button>
-                        <button class="score-btn green-ball" data-player="a" data-points="3">+3</button>
-                        <button class="score-btn brown-ball" data-player="a" data-points="4">+4</button>
-                        <button class="score-btn blue-ball" data-player="a" data-points="5">+5</button>
-                        <button class="score-btn pink-ball" data-player="a" data-points="6">+6</button>
-                        <button class="score-btn black-ball" data-player="a" data-points="7">+7</button>
-                    </div>
-                    
-                    <div class="foul-buttons">
-                        <button class="foul-btn" data-player="a" data-points="-4">-4</button>
-                        <button class="foul-btn" data-player="a" data-points="-5">-5</button>
-                        <button class="foul-btn" data-player="a" data-points="-6">-6</button>
-                        <button class="foul-btn" data-player="a" data-points="-7">-7</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Player B -->
-            <div class="player-panel player-b">
-                <div class="player-header">
-                    <input type="text" 
-                           class="player-name-input" 
-                           id="player-b-name" 
-                           placeholder="Player B"
-                           maxlength="20">
-                </div>
-                
-                <div class="score-display">
-                    <div class="score-value" id="score-b">0</div>
-                </div>
-
-                <div class="controls">
-                    <div class="score-buttons">
-                        <button class="score-btn red-ball" data-player="b" data-points="1">+1</button>
-                        <button class="score-btn yellow-ball" data-player="b" data-points="2">+2</button>
-                        <button class="score-btn green-ball" data-player="b" data-points="3">+3</button>
-                        <button class="score-btn brown-ball" data-player="b" data-points="4">+4</button>
-                        <button class="score-btn blue-ball" data-player="b" data-points="5">+5</button>
-                        <button class="score-btn pink-ball" data-player="b" data-points="6">+6</button>
-                        <button class="score-btn black-ball" data-player="b" data-points="7">+7</button>
-                    </div>
-                    
-                    <div class="foul-buttons">
-                        <button class="foul-btn" data-player="b" data-points="-4">-4</button>
-                        <button class="foul-btn" data-player="b" data-points="-5">-5</button>
-                        <button class="foul-btn" data-player="b" data-points="-6">-6</button>
-                        <button class="foul-btn" data-player="b" data-points="-7">-7</button>
-                    </div>
-                </div>
-            </div>
+        <div class="players-container" id="playersContainer">
+            <!-- Players will be dynamically generated here -->
         </div>
     </div>
 
+    <script src="characters.js"></script>
     <script src="script.js"></script>
     <script>
         // Register Service Worker for PWA
