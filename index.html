@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Snooo</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Professional Snooker Score Counter for casual play">
+    <meta name="theme-color" content="#d4af37">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Snooo">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" href="favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="eight-ball left"></div>
+            <h1 class="logo">
+                <span class="l1">S</span><span class="l2">N</span><span class="l3">O</span><span class="l4">O</span><span class="l5">O</span>
+            </h1>
+            <div class="eight-ball right"></div>
+            <div class="credits">By <a href="https://github.com/NehalVarma" target="_blank" rel="noopener">Nehal</a></div>
+        </header>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <div class="setting-group">
+                <label for="reds-count">Number of Reds:</label>
+                <select id="reds-count">
+                    <option value="8">8 Reds</option>
+                    <option value="10">10 Reds</option>
+                    <option value="15" selected>15 Reds</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <label for="respot-toggle">Re-spot Colours:</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="respot-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <button class="reset-btn" id="reset-btn">
+                <span>🔄 Reset Match</span>
+            </button>
+
+            <button class="undo-btn" id="undo-btn">
+                <span>↩️ Undo</span>
+            </button>
+        </div>
+
+        <!-- Players Container -->
+        <div class="players-container">
+            <!-- Player A -->
+            <div class="player-panel player-a">
+                <div class="player-header">
+                    <input type="text" 
+                           class="player-name-input" 
+                           id="player-a-name" 
+                           placeholder="Player A"
+                           maxlength="20">
+                </div>
+                
+                <div class="score-display">
+                    <div class="score-value" id="score-a">0</div>
+                </div>
+
+                <div class="controls">
+                    <div class="score-buttons">
+                        <button class="score-btn red-ball" data-player="a" data-points="1">+1</button>
+                        <button class="score-btn yellow-ball" data-player="a" data-points="2">+2</button>
+                        <button class="score-btn green-ball" data-player="a" data-points="3">+3</button>
+                        <button class="score-btn brown-ball" data-player="a" data-points="4">+4</button>
+                        <button class="score-btn blue-ball" data-player="a" data-points="5">+5</button>
+                        <button class="score-btn pink-ball" data-player="a" data-points="6">+6</button>
+                        <button class="score-btn black-ball" data-player="a" data-points="7">+7</button>
+                    </div>
+                    
+                    <div class="foul-buttons">
+                        <button class="foul-btn" data-player="a" data-points="-4">-4</button>
+                        <button class="foul-btn" data-player="a" data-points="-5">-5</button>
+                        <button class="foul-btn" data-player="a" data-points="-6">-6</button>
+                        <button class="foul-btn" data-player="a" data-points="-7">-7</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player B -->
+            <div class="player-panel player-b">
+                <div class="player-header">
+                    <input type="text" 
+                           class="player-name-input" 
+                           id="player-b-name" 
+                           placeholder="Player B"
+                           maxlength="20">
+                </div>
+                
+                <div class="score-display">
+                    <div class="score-value" id="score-b">0</div>
+                </div>
+
+                <div class="controls">
+                    <div class="score-buttons">
+                        <button class="score-btn red-ball" data-player="b" data-points="1">+1</button>
+                        <button class="score-btn yellow-ball" data-player="b" data-points="2">+2</button>
+                        <button class="score-btn green-ball" data-player="b" data-points="3">+3</button>
+                        <button class="score-btn brown-ball" data-player="b" data-points="4">+4</button>
+                        <button class="score-btn blue-ball" data-player="b" data-points="5">+5</button>
+                        <button class="score-btn pink-ball" data-player="b" data-points="6">+6</button>
+                        <button class="score-btn black-ball" data-player="b" data-points="7">+7</button>
+                    </div>
+                    
+                    <div class="foul-buttons">
+                        <button class="foul-btn" data-player="b" data-points="-4">-4</button>
+                        <button class="foul-btn" data-player="b" data-points="-5">-5</button>
+                        <button class="foul-btn" data-player="b" data-points="-6">-6</button>
+                        <button class="foul-btn" data-player="b" data-points="-7">-7</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>
